@@ -67,6 +67,8 @@ end
 group :test do
   # More readable specs. Read more: https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-matchers'
+  # Convinient test data setting. Read more: https://github.com/thoughtbot/factory_girl
+  gem 'factory_girl'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

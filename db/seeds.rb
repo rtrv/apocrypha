@@ -1,12 +1,15 @@
 Book.destroy_all
-
-loop do
-  begin
+begin
+  loop do
     book = Book.create name: Faker::Book.unique.title,
                        isbn: 1_000_000 + Book.all.count
     p "\"#{book.name}\" created with ISBN: #{book.isbn}"
-  rescue Faker::UniqueGenerator::RetryLimitExceeded
-    p 'All unique books have been created'
-    break
   end
+rescue Faker::UniqueGenerator::RetryLimitExceeded
+  p 'All unique books have been created'
 end
+
+User.destroy_all
+User.create email: 'test@test.test',
+            password: '12345678',
+            password_confirmation: '12345678'
