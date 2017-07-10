@@ -46,6 +46,9 @@ gem 'devise'
 # pry console. Read more: https://github.com/rweng/pry-rails
 gem 'pry-rails'
 
+# Fake data for seeds. Read more: https://github.com/stympy/faker
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -59,6 +62,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  # More readable specs. Read more: https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
