@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title
+      | Apocrypha
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    h1
+      = link_to 'Apocrypha', root_path
+    / h2 You never know where the road to knowledge leads
+    = render 'layouts/user_area'
+    = yield

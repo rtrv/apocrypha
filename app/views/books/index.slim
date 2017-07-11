@@ -1,8 +1,11 @@
 h1 Index
 
 = form_tag '', method: :get do
-  = text_field_tag :query
+  = text_field_tag :query, params[:query]
   = submit_tag 'Filter'
 
-ul
-  = render @books
+- if @books.present?
+  ul
+    = render @books
+- else
+  p There's nothing here. Seems like you're looking for some secret knowledge. It's dangerous way.
