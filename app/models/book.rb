@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   # Full text search
   pg_search_scope :search,
                   against: :name,
-                  using: { tsearch: { dictionary: 'english' } }
+                  using: :tsearch
 
   # Relations
   has_many :reservations
