@@ -1,1 +1,9 @@
-li = book.name
+li
+  b
+    = "\"#{book.name}\""
+  - if signed_in?
+    = ' '
+    - if book.user_reservation_id.present?
+      = link_to 'Return', reservation_path(id: book.user_reservation_id), method: :delete
+    - elsif book.is_available
+      = link_to 'Reserve', reservations_path(user: current_user, book: book), method: :post

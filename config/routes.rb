@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   resources :books, only: [:index]
 
+  resources :reservations, only: [:create, :destroy]
+
   root 'books#index'
 end

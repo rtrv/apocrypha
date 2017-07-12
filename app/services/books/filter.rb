@@ -1,7 +1,10 @@
 module Books
-  class Filter < BaseFilter
+  class Filter < Base::Filter
     def filter
-      @result = @query.present? ? Book.search(@query) : Book.all
+      scope = Book.include_counts
+      scope = scope.include_user_reservations(@user) if @user.present?
+
+      self.result = @query.present? ? scope.search(@query) : scope.all
     end
   end
 end

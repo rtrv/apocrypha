@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   # @books = Books::Filter.new(index_filter_params).filter
   def index
     name = "@#{controller_name}"
-    filtered_scope =
-      "#{controller_name.camelize}::Filter"
-      .constantize
-      .new(index_filter_params)
-      .filter
-    instance_variable_set(name, filtered_scope)
+
+    filter_instance =
+      "#{controller_name.camelize}::Filter".constantize.new(index_filter_params)
+    filter_instance.filter
+
+    instance_variable_set(name, filter_instance.result)
   end
 
   protected
