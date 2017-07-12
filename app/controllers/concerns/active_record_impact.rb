@@ -5,12 +5,16 @@ require 'active_support/concern'
 # appropriate service
 module ActiveRecordImpact
   extend ActiveSupport::Concern
-
   include SecurityExtension
 
   ACTIVE_RECORD_IMPACT_ACTIONS = [
     :create, :update, :destroy
   ].freeze
+
+  included do
+    # Allow unauthenticated impact at your own risk in specific controller!
+    before_action :authenticate_user!, only: ACTIVE_RECORD_IMPACT_ACTIONS
+  end
 
   ACTIVE_RECORD_IMPACT_ACTIONS.each do |method_name|
     define_method method_name do
