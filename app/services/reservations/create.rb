@@ -1,6 +1,6 @@
 module Reservations
-  class Creator < Base::Creator
-    def create
+  class Create < Base::Create
+    def perform
       super do
         self.result = Reservation.create!(book: @book, user: @user)
       end
