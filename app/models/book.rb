@@ -9,7 +9,7 @@ class Book < ApplicationRecord
                   using: :tsearch
 
   # Relations
-  has_many :reservations, before_add: :validate_availability
+  has_many :reservations
   has_many :users, through: :reservations
 
   # Scopes
